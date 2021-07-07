@@ -9,12 +9,50 @@
 
     <name>graph-archetype</name>
     <description>Archetype for generating a Java Project ready to query Reactome Graph Database.</description>
+    <url>https://github.com/reactome/graph-archetype</url>
+
+    <organization>
+        <name>Reactome</name>
+        <url>https://reactome.org</url>
+    </organization>
+
+    <licenses>
+        <license>
+            <name>The Apache License, Version 2.0</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <id>gviteri</id>
+            <name>Guilherme Viteri</name>
+            <email>gviteri@ebi.ac.uk</email>
+            <organization>https://www.ebi.ac.uk/</organization>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:git://github.com/reactome/graph-archetype.git</connection>
+        <developerConnection>scm:git:ssh://github.com:reactome/graph-archetype.git</developerConnection>
+        <url>https://github.com/reactome/graph-archetype/tree/master</url>
+    </scm>
+
+    <properties>
+        <!-- build -->
+        <jdk.version>1.8</jdk.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <!-- maven build and plugins -->
+        <maven.archetype.version>2.4</maven.archetype.version>
+    </properties>
+
     <build>
         <extensions>
             <extension>
                 <groupId>org.apache.maven.archetype</groupId>
                 <artifactId>archetype-packaging</artifactId>
-                <version>2.4</version>
+                <version>${maven.archetype.version}</version>
             </extension>
         </extensions>
 
@@ -22,37 +60,26 @@
             <plugins>
                 <plugin>
                     <artifactId>maven-archetype-plugin</artifactId>
-                    <version>2.4</version>
+                    <version>${maven.archetype.version}</version>
                 </plugin>
             </plugins>
         </pluginManagement>
     </build>
 
-    <url>http://maven.apache.org</url>
-
-    <developers>
-        <developer>
-            <id>gviteri</id>
-            <name>Guilherme Viteri</name>
-            <email>gviteri@ebi.ac.uk</email>
-            <organization>http://www.ebi.ac.uk/</organization>
-        </developer>
-    </developers>
-
+    <!-- Configures the distribution to nexus repository -->
     <distributionManagement>
-        <!-- EBI repo -->
+        <!-- Sonatype Release repo -->
         <repository>
-            <id>pst-release</id>
-            <name>EBI Nexus Repository</name>
-            <url>http://www.ebi.ac.uk/Tools/maven/repos/content/repositories/pst-release</url>
+            <id>ossrh</id>
+            <name>Sonatype Release Repository</name>
+            <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2</url>
         </repository>
-        <!-- EBI SNAPSHOT repo -->
+
+        <!-- Sonatype SNAPSHOT repo -->
         <snapshotRepository>
-            <uniqueVersion>false</uniqueVersion>
-            <id>pst-snapshots</id>
-            <name>EBI Nexus Snapshots Repository</name>
-            <url>http://www.ebi.ac.uk/Tools/maven/repos/content/repositories/pst-snapshots</url>
+            <id>ossrh</id>
+            <name>Sonatype Snapshot Repository</name>
+            <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
         </snapshotRepository>
     </distributionManagement>
-
 </project>
